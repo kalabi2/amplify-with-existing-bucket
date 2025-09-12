@@ -17,12 +17,12 @@ const { StorageBrowser } = createStorageBrowser({
 function App() {
   return (
     <Authenticator>
-      {({ signOut, user }) => (
+      {({ signOut }) => (
         <>
           <Flex direction="row" alignItems="center" wrap="nowrap" gap="1rem">
-            <Heading level={4}>{`Hello ${user?.username}`}</Heading>
+            <Heading level={4}>{`CSO AWS Storage Browser Portal`}</Heading>
             <Button onClick={signOut}>Sign out</Button>
-          </Flex>
+           </Flex>
           <StorageBrowser />
         </>
       )}
