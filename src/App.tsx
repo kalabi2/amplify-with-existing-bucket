@@ -4,7 +4,7 @@ import {
 } from '@aws-amplify/ui-react-storage/browser';
 import '@aws-amplify/ui-react-storage/styles.css';
 import './App.css';
-import Background from './bg.jpg';
+import Background from './Modern.jpg';
 import config from '../amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, Button, Flex, Heading } from '@aws-amplify/ui-react';
