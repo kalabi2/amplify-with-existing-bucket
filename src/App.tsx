@@ -17,6 +17,7 @@ const { StorageBrowser } = createStorageBrowser({
 
 function App() {
   return (
+    <>
     <Authenticator hideSignUp>
       {({ signOut }) => (
         <>
