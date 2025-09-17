@@ -39,7 +39,7 @@ function App() {
         {({ signOut }) => (
           <>
             <div className="header">
-              <Heading level={4}>CSO AWS Storage Browser Portal</Heading>
+              <Heading level={4}> AWS Storage Browser Portal</Heading>
               <Button onClick={signOut} variation="primary">
                 Sign out
               </Button>
