@@ -20,7 +20,7 @@ function App() {
     width: '100vw',
     height: '100vh',
     backgroundImage: `url(${Background})`,
-    backgroundSize: '1800px 1800px',
+    backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   };
@@ -30,13 +30,15 @@ function App() {
       <Authenticator hideSignUp>
         {({ signOut }) => (
           <>
-            <Flex direction="row" alignItems="center" wrap="nowrap" gap="1rem" style={{ backgroundColor: 'rgba(0,0,0,0.5)', padding: '1rem' }}>
-              <Heading level={4} style={{ color: 'white' }}>
-                CSO AWS Storage Browser Portal
-              </Heading>
-              <Button onClick={signOut}>Sign out</Button>
-            </Flex>
-            <StorageBrowser />
+            <div className="header">
+              <Heading level={4}>CSO AWS Storage Browser Portal</Heading>
+              <Button onClick={signOut} variation="primary">
+                Sign out
+              </Button>
+            </div>
+            <div style={{ padding: '0 2rem' }}>
+              <StorageBrowser />
+            </div>
           </>
         )}
       </Authenticator>
