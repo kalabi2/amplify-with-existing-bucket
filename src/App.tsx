@@ -33,7 +33,7 @@ function App() {
  
     <StorageImage
       alt="CSO Image"
-      path={({ identityId }) => `public/${identityId}/cat.jpg`}
+      path="public/Modern.jpg"
     />
     </>
   );
