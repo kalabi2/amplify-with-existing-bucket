@@ -8,6 +8,7 @@ import './App.css';
 import config from '../amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, Button, Flex, Heading } from '@aws-amplify/ui-react';
+import { StorageImage } from '@aws-amplify/ui-react-storage';
 Amplify.configure(config);
 
 const { StorageBrowser } = createStorageBrowser({
@@ -27,7 +28,15 @@ function App() {
         </>
       )}
     </Authenticator>
+
+ 
+    <StorageImage
+      alt="CSO Image"
+      path={({ identityId }) => `public/${identityId}/cat.jpg`}
+    />
+    </>
   );
+
 }
 
 export default App;
