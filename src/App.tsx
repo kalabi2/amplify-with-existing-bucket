@@ -7,9 +7,17 @@ import './App.css';
 import Background from './Modern.jpg';
 import config from '../amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
 import { Authenticator, Button, Heading } from '@aws-amplify/ui-react';
 
-Amplify.configure(config);
+// Configure Amplify in index file or root file
+const amplifyConfig = {
+  ...awsExports,
+  ...config,
+};
+
+
+Amplify.configure(amplifyConfig);
 
 const { StorageBrowser } = createStorageBrowser({
   config: createAmplifyAuthAdapter(),
