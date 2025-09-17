@@ -7,8 +7,10 @@ import './App.css';
 import Background from './Modern.jpg';
 import config from '../amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
-import { Authenticator, Button, Heading, div } from '@aws-amplify/ui-react';
+import { Authenticator, Button, Heading } from '@aws-amplify/ui-react';
+import { amplifyConfig } from './amplifyConfig';
 
+Amplify.configure(amplifyConfig);
 Amplify.configure(config);
 
 const { StorageBrowser } = createStorageBrowser({
