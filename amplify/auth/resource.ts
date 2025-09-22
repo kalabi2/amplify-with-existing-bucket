@@ -19,5 +19,5 @@ export const auth = referenceAuth({
   identityPoolId: 'eu-west-1:788c7171-e74c-48f3-b2e6-d393c565dea9',
   authRoleArn: 'arn:aws:iam::484907493866:role/amplify-d1udrw7f3bvbsj-ma-amplifyAuthauthenticatedU-5ixSVfoNXNfT',
   unauthRoleArn: 'arn:aws:iam::484907493866:role/amplify-d1udrw7f3bvbsj-ma-amplifyAuthauthenticatedU-5ixSVfoNXNfT',
-  userPoolClientId: '5gq7rtkmks8vkribkieebmdsqo',
+  userPoolClientId: '7ahg3bv8gaqs0tv0bln910mpf3',
 });
