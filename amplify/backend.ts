@@ -35,14 +35,15 @@ backend.addOutput({
         name: customBucketName,
         bucket_name: customBucketName,
         aws_region: "eu-west-1",
-        //@ts-expect-error amplify backend type issue https://github.com/aws-amplify/amplify-backend/issues/2569
+
         paths: {
           "admin1/*": {
-            guest: ["get", "list"],
             authenticated: ["get", "list", "write", "delete"],
           },
           "admin2/*": {
-            groupsadmin: ["get", "list", "write", "delete"],
+            authenticated: ["get", "list", "write", "delete"],
+          },
+          "admin3/*": {
             authenticated: ["get", "list", "write", "delete"],
           },
         },
@@ -55,7 +56,7 @@ backend.addOutput({
  * Define an inline policy to attach to Amplify's un-auth role
  * This policy defines how unauthenticated users can access your existing bucket
  */
-const unauthPolicy = new Policy(backend.stack, "customBucketUnauthPolicy", {
+const admin1 = new Policy(backend.stack, "customBucketadmin1", {
   statements: [
     new PolicyStatement({
       effect: Effect.ALLOW,
@@ -79,7 +80,7 @@ const unauthPolicy = new Policy(backend.stack, "customBucketUnauthPolicy", {
  * Define an inline policy to attach to Amplify's auth role
  * This policy defines how authenticated users can access your existing bucket
  */
-const authPolicy = new Policy(backend.stack, "customBucketAuthPolicy", {
+const admin2 = new Policy(backend.stack, "customBucketadmin2", {
   statements: [
     new PolicyStatement({
       effect: Effect.ALLOW,
@@ -109,7 +110,7 @@ const authPolicy = new Policy(backend.stack, "customBucketAuthPolicy", {
  * Define an inline policy to attach to Admin user role
  * This policy defines how authenticated users can access your existing bucket
  */
-const adminPolicy = new Policy(backend.stack, "customBucketAdminPolicy", {
+const admin3 = new Policy(backend.stack, "customBucketadmin3", {
   statements: [
     new PolicyStatement({
       effect: Effect.ALLOW,
@@ -132,13 +133,11 @@ const adminPolicy = new Policy(backend.stack, "customBucketAdminPolicy", {
   ],
 });
 
-// Add the policies to the unauthenticated user role
-backend.auth.resources.unauthenticatedUserIamRole.attachInlinePolicy(
-  unauthPolicy
-);
+// Add the policies to the admin1 user role
+backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(admin1);
 
-// Add the policies to the authenticated user role
-backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(authPolicy);
+// Add the policies to the admin2 user role
+backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(admin2);
 
-// Add the policies to the admin user role
-backend.auth.resources.groups["admin"].role.attachInlinePolicy(adminPolicy);
+// Add the policies to the admin3 user role
+backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(admin3);
